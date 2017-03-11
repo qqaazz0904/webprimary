@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="" name="" id="inp1" value="" />
+		<input type="" name="" id="inp2" value="" />
+		<button>+</button>
+		<button>-</button>
+		<button>*</button>
+		<button>/</button>
+		<input type="" name="" id="inp3" value="" />
+	</body>
+</html>
+<script type="text/javascript">
+		function $(id) { return document.getElementById(id); }
+		var buts = document.getElementsByTagName("button");
+		for(var i = 0; i < buts.length; i++)
+		{
+			buts[i].index = i;
+			buts[i].onclick = function() {
+			var j = $("inp1").value;
+			var f = $("inp2").value;
+				if(this.index == 0) {
+					$("inp3").value = parseInt(j)+parseInt(f);
+				}else if(this.index == 1) {
+					$("inp3").value = parseInt(j)-parseInt(f);                                             
+				}else if(this.index == 2) {
+					$("inp3").value = parseInt(j)*parseInt(f);
+				}else if(this.index == 3) {
+					$("inp3").value = parseInt(j)/parseInt(f);
+				}
+			}
+		}
+</script>

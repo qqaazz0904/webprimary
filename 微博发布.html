@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style-type: none;
+			}
+			.box{
+				width: 600px;
+				margin: 100px auto;
+				border: 1px solid black;
+				height: auto;
+				padding: 30px 0;				
+			}
+			textarea{
+				width: 450px;
+				resize: none; /* 防止用户拖动*/
+			}
+			.box li{
+				width: 450px;
+				line-height: 30px;
+				border-bottom: 1px dashed black;
+				margin-left: 80px;
+			}
+			.box li a{
+				float: right;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var btn = document.getElementsByTagName("button")[0];
+				var txt = document.getElementsByTagName("textarea")[0];
+				var ul = document.createElement("ul");  /*获取*/
+				btn.parentNode.appendChild(ul);         /*btn的爸爸box创建儿子ul*/
+				btn.onclick = function(){
+					if(txt.value =="")					/*判断用户输入是否为空*/
+					{
+						alert("用户输入不能为空")
+						return false;					/*为空弹出警告然后终止*/
+					}
+					var newli = document.createElement("li");   /*创建一个li*/
+					newli.innerHTML = txt.value + "<a href = 'javascript:;'>删除</a>";  /*把textarea里面的value值给li*/
+					txt.value = "";					/*清空textarea里面的value值*/
+					var lis = ul.children;			/*获取ul里面有多少个li*/
+					if(lis.length == 0)				/*如果里面没有li*/
+					{
+						ul.appendChild(newli);		/*在ul里面创建一个li*/
+					}
+					else
+					{
+						ul.insertBefore(newli,lis[0]); /*里面有li， 在这个li前面创建新li*/
+					}
+					var as =document.getElementsByTagName("a");  /*获取 微博删除的A标签*/
+					for(var i=0; i<as.length; i++)     /*遍历一遍拿来使用*/
+					{
+						as[i].onclick = function(){		/*点击事件*/
+							ul.removeChild(this.parentNode);  /*移除 a的爸爸也就是直接删除了当前a所对应的li*/
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			微博发布： <textarea name="" rows="10" cols="30"></textarea> <button>发布</button>
+		</div>
+	</body>
+</html>

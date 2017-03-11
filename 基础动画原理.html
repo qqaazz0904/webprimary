@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<button>开始</button>
+		<div></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var btn = document.getElementsByTagName("button")[0];
+	var box = document.getElementsByTagName("div")[0];
+	var timer = null;
+	btn.onclick = function(){
+		timer = setInterval(function(){
+			if(box.offsetLeft > 400)
+			{
+				clearInterval(timer);
+			}
+			box.style.left = box.offsetLeft + 10 + "px";
+		},20);
+	}
+</script>

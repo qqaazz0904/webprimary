@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="" id="" />
+		<button id="btn">点击发送短信</button>
+	</body>
+</html>
+<script type="text/javascript">
+	var btn = document.getElementById("btn");
+	var count = 5;
+	var timer = null; //定时器名字
+	btn.onclick = function(){
+//		clearInterval(timer);  //清空计时器                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+		this.disabled = true;
+		var that = this;  //那个等于这个
+		timer = setInterval(sendTextMessage,1000);
+		function sendTextMessage(){
+			count--;
+			if(count >= 0)
+			{
+				that.innerHTML = "再次发送("+count+")";
+			}
+			else
+			{
+				that.innerHTML = "重新发送短信";
+				that.disabled = false;
+				clearInterval(timer);
+				count = 5;
+			}
+		}
+		
+	}
+</script>

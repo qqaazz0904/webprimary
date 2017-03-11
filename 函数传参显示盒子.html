@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+				margin: 20px;
+				display: none;
+			}
+		</style>
+		<script type="text/javascript">
+			function fn(aaa) {
+				var target = document.getElementById(aaa);
+				target.style.display = "block";
+			}
+		</script>
+	</head>
+
+	<body>
+		<button onclick="fn('demo1')">显示第1个盒子</button>
+		<button onclick="fn('demo2')">显示第2个盒子</button>
+		<button onclick="fn('demo3')">显示第3个盒子</button>
+		<button onclick="fn('demo4')">显示第4个盒子</button>
+		<div id="demo1"></div>
+		<div id="demo2"></div>
+		<div id="demo3"></div>
+		<div id="demo4"></div>
+	</body>
+
+</html>

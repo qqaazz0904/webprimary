@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+        *{
+        	padding: 0;
+        	margin: 0;
+        }
+        #box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        #box1 {
+            position: absolute;
+            top: 150px;
+            width: 200px;
+            height: 200px;
+            background-color: purple;
+        }
+    </style>
+	</head>
+	<body>
+		<button id="btn0">复位</button>
+		<button id="btn200">粉200、紫500</button>
+		<button id="btn400">粉400、紫800</button>
+		<div id="box"></div>
+		<div id="box1"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var ben0 = document.getElementById("btn0");
+	var box = document.getElementById("box");
+	var box1 = document.getElementById("box1");
+    var btn200 = document.getElementById("btn200");
+    var btn400 = document.getElementById("btn400");
+    btn0.onclick = function(){
+    	animate(box,0);
+    	animate(box1,0);
+    }
+    btn200.onclick = function(){
+    	animate(box,200);
+    	animate(box1,500);
+    }
+    btn400.onclick = function() {
+        animate(box,400);
+        animate(box1,800);
+    }
+    //封装匀速运动
+    function animate(obj,target){
+    	clearInterval(obj.timer);//清理定时器
+    	var speed = obj.offsetLeft < target ? 5 : -5;//用来判断是加5还是减5的匀速运动
+    	obj.timer = setInterval(function(){
+    		var result = target - obj.offsetLeft;//他们的值不会超过5
+    		obj.style.left = obj.offsetLeft + speed + "px";//这个是移动的匀速
+//  		if(result <=5)  如果这样写就回不来了，要用绝对值；
+			if(Math.abs(result) <= 5)//如果值小于或等于了了5，说明已经接近到位置了，可是有5像素的误差；
+    		{
+    			clearInterval(obj.timer);
+    			obj.style.left = target +"px";//定时器被判定停止的时候，
+    			//为了准确的停在想要的值上，防止5像素内的误差，直接让他们相等；
+    		}
+    	},30)
+    	
+    }
+</script>

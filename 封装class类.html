@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+				margin: 10px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				function getClass(classname)
+				{
+					if(document.getElementsByClassName)
+					{
+						return document.getElementsByClassName(classname);
+					}
+					var arr = [];
+					var dom = document.getElementsByTagName("*");
+					for(var i=0;i<dom.length;i++)
+					{
+						var txtarr = dom[i].className.split(" ");
+						for(var j=0;j<txtarr.length;j++)
+						{
+							if(txtarr[j] == classname)
+							{
+								arr.push(dom[i]);
+							}
+						}
+					}
+					return arr;
+				}
+				console.log(getClass("test"));
+				function fun(){
+				getClass("test").style.backgroundColor = #333;
+				}
+				fun();
+			}
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div class="demo"></div>
+		<div class="test"></div>
+		<div></div>
+		<div class="demo"></div>
+		<div></div>
+		<div class="demo test one"></div>
+		<div class="demo one"></div>
+		<div></div>
+		<div class="demo"></div>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+第一个数:<input type="text" id="one"/><br />
+第二个数:<input type="text" id="two"/><br />
+<input type="button" value="+" onclick="calc(this)"/>
+<input type="button" value="-" onclick="calc(this)"/>
+<input type="button" value="*" onclick="calc(this)"/>
+<input type="button" value="/" onclick="calc(this)"/><br />
+计算结果:<input type="text" id="result"/><br />
+</body>
+<script>
+	function $(id){
+			return document.getElementById(id);
+		}
+		
+    function calc(operator){
+        switch(operator.value){
+        	case "+":$("result").value=parseInt($("one").value)+parseInt($("two").value);break;
+            case "-":$("result").value=parseInt($("one").value)-parseInt($("two").value);break;
+            case "*":$("result").value=parseInt($("one").value)*parseInt($("two").value);break;
+            case "/":$("result").value=parseInt($("one").value)/parseInt($("two").value);break;
+        }
+    
+    }
+
+</script>
+</html>
